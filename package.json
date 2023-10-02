@@ -10,6 +10,7 @@
     "front:dev": "vite",
     "front:build": "vite build"
   },
+  "type": "module",
   "repository": "git@github.com:moon250/bacos.git",
   "author": "moon250 <mooneupho@gmail.com>",
   "license": "MIT",
@@ -23,6 +24,7 @@
   },
   "dependencies": {
     "dotenv": "^16.3.1",
+    "redis": "^4.6.10",
     "socket.io": "^4.7.2",
     "socket.io-client": "^4.7.2"
   },

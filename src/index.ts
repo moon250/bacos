@@ -1,1 +1,1 @@
-console.log("Bacos is on the way ...");
+import "./bootstrap.js";
