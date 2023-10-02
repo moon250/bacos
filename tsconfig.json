@@ -1,0 +1,20 @@
+{
+  "compileOnSave": true,
+  "compilerOptions": {
+    "moduleResolution": "Node16",
+    "lib": ["ES2022"],
+    "module": "Node16",
+    "rootDir": "src",
+    "outDir": "dist",
+    "target": "ES2022",
+
+    "strict": true,
+    "useUnknownInCatchVariables": false,
+    "noEmitOnError": true,
+    "noUncheckedIndexedAccess": true,
+  },
+  "include": ["src/**/*"],
+  "exclude": [
+    "node_modules"
+  ]
+}
