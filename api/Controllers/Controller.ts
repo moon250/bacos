@@ -1,12 +1,33 @@
-import { FastifyReply, FastifyRequest } from "fastify";
 import { JsonResponse } from "../Router/JsonResponse.js";
+import {FastifyReply, FastifyRequest, RouteShorthandOptionsWithHandler} from "fastify";
 
-export const call = (controller: { [key: string]: unknown }, name: string, request: FastifyRequest, reply: FastifyReply): object => {
+type Controller = { [key: string]: unknown };
+
+const call = async (controller: Controller, name: string, ...parameters: any[]): Promise<object> => {
   const method = controller[name]
 
   if (typeof method !== "function") {
     throw new Error(`Method ${name} was not found on provided controller`)
   }
 
-  return (method(request, reply) as JsonResponse).toResponse()
+  return await method(...parameters)
+}
+
+export const controller = (controller: Controller, method: string) => {
+  const shorthandMethod: RouteShorthandOptionsWithHandler = {
+    handler: async (request: FastifyRequest, reply: FastifyReply) => {
+      return (await call(controller, method, request, reply) as JsonResponse).toResponse()
+    }
+  }
+
+  if (`${method}_validation` in controller) {
+    shorthandMethod['schema'] = {
+      body: {
+        type: 'object',
+        ...(controller[`${method}_validation`] as object)
+      }
+    }
+  }
+
+  return shorthandMethod;
 }
