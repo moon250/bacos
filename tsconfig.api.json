@@ -1,10 +1,10 @@
 {
   "extends": "./tsconfig.base.json",
   "compilerOptions": {
-    "rootDir": "api",
+    "rootDir": "src/api",
     "outDir": "dist/api",
   },
   "include": [
-    "api/**/*"
+    "src/api/**/*"
   ],
 }
