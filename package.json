@@ -25,6 +25,8 @@
     "vite": "^4.4.9"
   },
   "dependencies": {
+    "@fastify/middie": "^8.3.0",
+    "@types/connect": "^3.4.36",
     "dotenv": "^16.3.1",
     "fastify": "^4.23.2",
     "redis": "^4.6.10",

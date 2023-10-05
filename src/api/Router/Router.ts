@@ -1,9 +1,12 @@
 import Fastify from "fastify";
 import { registerRoutes } from "./routes.js";
+import { fastifyMiddie } from "@fastify/middie";
 
 const fastify = Fastify({
   logger: true,
 });
+
+fastify.register(fastifyMiddie);
 
 fastify.register(registerRoutes, { prefix: "/api" });
 
