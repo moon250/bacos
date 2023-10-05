@@ -10,7 +10,7 @@ const set = async (key: string, value: any, ttl: number = -1) => {
   });
 };
 
-const exists = async (key: string) => await connection.exists(key);
+const exists = async (key: string) => !!(await connection.exists(key));
 
 export const client = {
   get,
