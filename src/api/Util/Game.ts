@@ -47,8 +47,15 @@ export class Game {
     return id;
   }
 
-  static async get(id: GameId) {
-    return await client.get<GameObject>(`game:${id}`);
+  static async get(id: GameId): Promise<GameObject> {
+    const game = await client.get(`game:${id}`);
+
+    return {
+      id: game.id,
+      owner: game.owner,
+      parameters: new Bitfield<GameParametersEnum>(game.parameters),
+      answers: new Bitfield<GameAnswersEnum>(game.answers),
+    };
   }
 
   static async exists(id: GameId) {

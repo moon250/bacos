@@ -11,12 +11,17 @@ export const registerRoutes: FastifyPluginCallback = (fastify, opts, done) => {
   });
 
   fastify.post("/user", controller(UserController, "create"));
+
   fastify.route({
     method: "POST",
     url: "/game",
     onRequest: Authenticated,
     ...controller(GameController, "create"),
   });
+  fastify.get(
+    "/game/:code/parameters",
+    controller(GameController, "parameters"),
+  );
 
   done();
 };
