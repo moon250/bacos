@@ -18,11 +18,11 @@
   "license": "MIT",
   "private": true,
   "devDependencies": {
-    "@types/node": "^20.8.0",
+    "@types/node": "^20.8.2",
     "prettier": "^3.0.3",
     "tsc-watch": "^6.0.4",
     "typescript": "^5.2.2",
-    "vite": "^4.4.9"
+    "vite": "^4.4.11"
   },
   "dependencies": {
     "dotenv": "^16.3.1",

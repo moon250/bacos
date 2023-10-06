@@ -3,7 +3,7 @@ type BitfieldFlag = number;
 export class Bitfield<BitFlagType extends BitfieldFlag> {
   bitfield = 0x0;
 
-  constructor(bitfield: number) {
+  constructor(bitfield: number = 0x0) {
     this.bitfield = bitfield;
   }
 
