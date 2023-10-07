@@ -39,6 +39,11 @@ export class Game {
     return game;
   }
 
+  static async delete(id: GameId) {
+    await client.del(`game:${id}`);
+    await client.del(`game:${id}:members`);
+  }
+
   static async generateId(): Promise<GameId> {
     // https://stackoverflow.com/a/8084248
     // https://stackoverflow.com/a/6259543
@@ -75,5 +80,35 @@ export class Game {
 
   static async exists(id: GameId) {
     return await client.exists(`game:${id}`);
+  }
+
+  static async join(id: GameId, user: Ip) {
+    if (!(await this.exists(id))) {
+      return false;
+    }
+
+    await client.sAdd(`game:${id}:members`, user);
+    await client.hSet(`game:users`, user, id);
+
+    return true;
+  }
+
+  static async leave(id: GameId, user: Ip) {
+    if (!(await this.exists(id))) {
+      return false;
+    }
+
+    if (!(await client.sIsMember(`game:${id}:members`, user))) {
+      return false;
+    }
+
+    await client.sRem(`game:${id}:members`, user);
+    await client.hDel(`game:users`, user);
+
+    if ((await client.sCard(`game:${id}:members`)) === 0) {
+      this.delete(id);
+    }
+
+    return true;
   }
 }

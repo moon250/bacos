@@ -3,7 +3,7 @@ import { User } from "../Util/User.js";
 import { FastifyRequest } from "fastify";
 
 export const UserController = {
-  async create(request: FastifyRequest): Promise<JsonResponse> {
+  async create(request: FastifyRequest) {
     const ip = request.ip;
     const body = request.body as { [key: string]: unknown };
     const username = body["username"] as string;
@@ -14,14 +14,14 @@ export const UserController = {
       return new JsonResponse({
         message: `You already have a temporary user. Done nothing.`,
         username: user.username,
-      });
+      }).toResponse();
     }
 
     await User.create(username, ip);
 
     return new JsonResponse({
       message: `Temporary user '${username}' successfully created`,
-    });
+    }).toResponse();
   },
 
   create_validation: {

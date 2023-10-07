@@ -1,7 +1,7 @@
 export class JsonResponse {
   private readonly data: object | string;
 
-  constructor(data: object | string) {
+  constructor(data: object | string = "") {
     this.data = data;
   }
 

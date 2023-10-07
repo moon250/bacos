@@ -15,6 +15,10 @@ export const client = {
     await connection.set(key, JSON.stringify(value), params);
   },
 
+  del: async (key: string) => {
+    await connection.del(key);
+  },
+
   exists: async (key: string) => !!(await connection.exists(key)),
 
   sAdd: async (key: string, ...values: any[]) => {
@@ -31,6 +35,10 @@ export const client = {
 
   sIsMember: async (key: string, value: any): Promise<boolean> => {
     return await connection.sIsMember(key, value);
+  },
+
+  sCard: async (key: string) => {
+    return await connection.sCard(key);
   },
 
   hSet: async (key: string, field: string, value: any) => {

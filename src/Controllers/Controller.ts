@@ -24,9 +24,7 @@ const call = async (
 export const controller = (controller: Controller, method: string) => {
   const shorthandMethod: RouteShorthandOptionsWithHandler = {
     handler: async (request: FastifyRequest, reply: FastifyReply) => {
-      return (
-        (await call(controller, method, request, reply)) as JsonResponse
-      ).toResponse();
+      return await call(controller, method, request, reply);
     },
   };
 

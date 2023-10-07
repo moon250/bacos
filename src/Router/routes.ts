@@ -18,6 +18,18 @@ export const registerRoutes: FastifyPluginCallback = (fastify, opts, done) => {
     onRequest: Authenticated,
     ...controller(GameController, "create"),
   });
+  fastify.route({
+    method: "POST",
+    url: "/game/join",
+    onRequest: Authenticated,
+    ...controller(GameController, "join"),
+  });
+  fastify.route({
+    method: "POST",
+    url: "/game/leave",
+    onRequest: Authenticated,
+    ...controller(GameController, "leave"),
+  });
   fastify.get(
     "/game/:code/parameters",
     controller(GameController, "parameters"),
