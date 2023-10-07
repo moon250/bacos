@@ -1,13 +1,30 @@
 import { FastifyReply, FastifyRequest } from "fastify";
 import { JsonResponse } from "../Router/JsonResponse.js";
 import { Game } from "../Util/Game.js";
+import { client } from "../Redis/Client.js";
+import * as repl from "repl";
 
 export const GameController = {
   /**
    * Creates a new game
    */
-  async create(request: FastifyRequest): Promise<JsonResponse> {
+  async create(
+    request: FastifyRequest,
+    reply: FastifyReply,
+  ): Promise<JsonResponse> {
     const body = request.body as { [key: string]: any };
+
+    if (await client.hExists(`game:users`, request.ip)) {
+      const game = await client.hGet(`game:users`, request.ip);
+      return reply
+        .status(403)
+        .send(
+          new JsonResponse(
+            `You are already in a game (${game}), leave it first.`,
+          ).toResponse(),
+        );
+    }
+
     const game = await Game.create(
       request.ip,
       body["parameters"],

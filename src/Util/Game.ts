@@ -33,6 +33,8 @@ export class Game {
     };
 
     await client.set(`game:${id}`, game);
+    await client.sAdd(`game:${id}:members`, owner);
+    await client.hSet(`game:users`, owner, id);
 
     return game;
   }
