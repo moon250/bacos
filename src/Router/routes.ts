@@ -6,8 +6,12 @@ import { GameController } from "../Controllers/GameController.js";
 import { Authenticated } from "../Middlewares/Authenticated.js";
 
 export const registerRoutes: FastifyPluginCallback = (fastify, opts, done) => {
-  fastify.get("/test", async (request, reply) => {
-    return new JsonResponse("Bacos alive !");
+  fastify.route({
+    method: ["GET", "POST"],
+    url: "/",
+    handler() {
+      return new JsonResponse("Bacos is alive").toResponse();
+    },
   });
 
   fastify.post("/user", controller(UserController, "create"));

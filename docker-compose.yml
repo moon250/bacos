@@ -18,7 +18,7 @@ services:
   api:
     restart: unless-stopped
     build:
-      context: docker/node
+      context: .
     volumes:
       - .:/var/www:delegated
     networks:
@@ -31,15 +31,6 @@ services:
       - "6379:6379"
     networks:
       - bacos
-
-  vite:
-    restart: unless-stopped
-    build:
-      context: ./docker/vite
-    ports:
-      - "5173:5173"
-    volumes:
-      - ./:/usr/src/app
 
 networks:
   bacos:
