@@ -12,6 +12,7 @@ export const GameController = {
       request.ip,
       body["parameters"],
       body["answers"],
+      body["letters"],
     );
 
     return new JsonResponse({
@@ -19,6 +20,7 @@ export const GameController = {
         code: game.id,
         parameters: game.parameters,
         answers: game.answers,
+        letters: game.letters,
       },
     });
   },
@@ -27,8 +29,9 @@ export const GameController = {
     properties: {
       parameters: { type: "number" },
       answers: { type: "number" },
+      letters: { type: "number", minimum: 1, maximum: 26 },
     },
-    required: ["parameters", "answers"],
+    required: ["parameters", "answers", "letters"],
   },
 
   /**
@@ -41,7 +44,7 @@ export const GameController = {
     const params = request.params as { [key: string]: any };
     const code = params["code"] as string;
 
-    if ((await Game.exists(code)) === false) {
+    if (!(await Game.exists(code))) {
       return reply
         .code(404)
         .send(
@@ -63,6 +66,7 @@ export const GameController = {
         bitfield: game.parameters.bitfield,
         flags: game.parameters.getFlags(),
       },
+      letters: game.letters,
     });
   },
 };

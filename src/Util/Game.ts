@@ -12,6 +12,7 @@ export type GameObject = {
   owner: Ip;
   parameters: GameParameters;
   answers: GameAnswers;
+  letters: number;
 };
 
 export class Game {
@@ -19,6 +20,7 @@ export class Game {
     owner: Ip,
     parameters: GameParameters,
     answers: GameAnswers,
+    letters: number,
   ): Promise<GameObject> {
     const id = await this.generateId();
 
@@ -27,6 +29,7 @@ export class Game {
       owner,
       parameters,
       answers,
+      letters,
     };
 
     await client.set(`game:${id}`, game);
@@ -64,6 +67,7 @@ export class Game {
       owner: game.owner,
       parameters: new Bitfield<GameParametersEnum>(game.parameters),
       answers: new Bitfield<GameAnswersEnum>(game.answers),
+      letters: game.letters,
     };
   }
 
