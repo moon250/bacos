@@ -36,12 +36,21 @@ export class Game {
 
   static async generateId(): Promise<GameId> {
     // https://stackoverflow.com/a/8084248
-    let id = (Math.random() + 1).toString(36).substring(6).toUpperCase();
+    // https://stackoverflow.com/a/6259543
+    const generate = (): string =>
+      (
+        Math.random()
+          .toString(36)
+          .substring(2)
+          .match(/.{1,6}/g) as RegExpMatchArray
+      ).at(0) as string;
+
+    let id = generate().toUpperCase();
 
     // Handle the case where the id is already in use. Should barely happen (once in 50k times according to the guy on
     // StackOverflow but just in case, it is here)
     while (await this.exists(id)) {
-      id = (Math.random() + 1).toString(36).substring(6).toUpperCase();
+      id = generate().toUpperCase();
     }
 
     return id;
