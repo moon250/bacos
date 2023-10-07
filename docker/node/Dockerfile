@@ -4,4 +4,4 @@ WORKDIR /var/www
 
 RUN yarn
 
-CMD ["yarn", "websockets:watch"]
+CMD ["yarn", "watch"]

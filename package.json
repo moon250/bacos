@@ -4,9 +4,8 @@
   "main": "dist/index.js",
   "scripts": {
     "build": "tsc",
-    "websockets:watch": "tsc-watch -p \"./tsconfig.websockets.json\" --onSuccess \"npm run websockets:start\"",
+    "watch": "tsc-watch --onSuccess \"sh -c 'npm run websockets:start & npm run api:start'\"",
     "websockets:start": "node dist/websockets/index.js",
-    "api:watch": "tsc-watch -p \"./tsconfig.api.json\" --onSuccess \"npm run api:start\"",
     "api:start": "node dist/api/index.js",
     "format": "prettier --write \"src/\"",
     "front:dev": "vite",

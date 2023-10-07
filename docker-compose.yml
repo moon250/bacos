@@ -18,16 +18,7 @@ services:
   api:
     restart: unless-stopped
     build:
-      context: docker/api
-    volumes:
-      - .:/var/www:delegated
-    networks:
-      - bacos
-
-  websockets:
-    build:
-      context: docker/websockets
-    restart: unless-stopped
+      context: docker/node
     volumes:
       - .:/var/www:delegated
     networks:
