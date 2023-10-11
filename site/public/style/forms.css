@@ -1,3 +1,8 @@
+input,
+button {
+  transition: all 0.2s;
+}
+
 input[type="text"] {
   border: var(--secondary) 3px solid;
   padding: 8px 16px;
@@ -6,6 +11,7 @@ input[type="text"] {
 }
 
 input[type="text"]:focus {
+  transform: translateX(3px) translateY(-3px);
   box-shadow: -3px 3px 0 0 var(--secondary);
 }
 
@@ -17,10 +23,13 @@ button {
 }
 
 button:hover {
+  transform: translateX(3px) translateY(-3px);
   box-shadow: -3px 3px 0 0 var(--secondary);
 }
 
-input,
-button {
-  transition: all 0.2s;
+@media screen and (max-width: 600px) {
+  input[type="text"],
+  button {
+    font-size: 0.8rem;
+  }
 }

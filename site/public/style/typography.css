@@ -13,6 +13,10 @@ h2 {
   font-size: 1.65rem;
 }
 
+a {
+  text-decoration: none;
+}
+
 @media screen and (max-width: 600px) {
   h1 {
     font-size: 4rem;
