@@ -1,0 +1,15 @@
+@import "reset.css";
+@import "typography.css";
+
+:root {
+  --accent: #6ae82f;
+  --primary: #ffffff;
+  --secondary: #000000;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Montserrat, sans-serif;
+}

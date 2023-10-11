@@ -5,7 +5,7 @@ export default defineConfig({
   plugins: [
     vue()
   ],
-  root: "./site",
+  root: "./site/public/",
   server: {
     host: "0.0.0.0"
   }

@@ -1,7 +1,9 @@
 <template>
-  <h1>Bacos is running</h1>
+  <HomePage />
 </template>
 
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import HomePage from "./Components/Pages/HomePage.vue";
+</script>
 
 <style scoped></style>

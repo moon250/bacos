@@ -1,0 +1,24 @@
+@font-face {
+  font-family: "Abril Fatface";
+  src: url("../fonts/Montserrat.woff2") format("woff2");
+  font-style: normal;
+  font-display: swap;
+}
+
+h1 {
+  font-size: 5.5rem;
+}
+
+h2 {
+  font-size: 1.65rem;
+}
+
+@media screen and (max-width: 600px) {
+  h1 {
+    font-size: 4rem;
+  }
+
+  h2 {
+    font-size: 1.2rem;
+  }
+}
