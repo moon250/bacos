@@ -1,0 +1,26 @@
+input[type="text"] {
+  border: var(--secondary) 3px solid;
+  padding: 8px 16px;
+  outline: none;
+  background: none;
+}
+
+input[type="text"]:focus {
+  box-shadow: -3px 3px 0 0 var(--secondary);
+}
+
+button {
+  border: var(--secondary) 3px solid;
+  padding: 8px 16px;
+  background: none;
+  cursor: pointer;
+}
+
+button:hover {
+  box-shadow: -3px 3px 0 0 var(--secondary);
+}
+
+input,
+button {
+  transition: all 0.2s;
+}

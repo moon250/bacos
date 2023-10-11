@@ -1,5 +1,6 @@
 @import "reset.css";
 @import "typography.css";
+@import "forms.css";
 
 :root {
   --accent: #6ae82f;
