@@ -1,8 +1,9 @@
-import { User } from "../Util/User.js";
+import { User } from "../../Util/User.js";
 import { FastifyReply, FastifyRequest } from "fastify";
-import { JsonResponse } from "../Router/JsonResponse.js";
+import { JsonResponse } from "../JsonResponse.js";
+import { Middleware } from "../router.js";
 
-export const Authenticated = async (
+export const Authenticated: Middleware = async (
   request: FastifyRequest,
   reply: FastifyReply,
 ) => {

@@ -1,11 +1,10 @@
-import { JsonResponse } from "../Router/JsonResponse.js";
 import {
   FastifyReply,
   FastifyRequest,
   RouteShorthandOptionsWithHandler,
 } from "fastify";
 
-type Controller = { [key: string]: unknown };
+export type Controller = { [key: string]: unknown };
 
 const call = async (
   controller: Controller,
