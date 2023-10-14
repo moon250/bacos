@@ -6,15 +6,13 @@
       </h1>
       <h2>Le jeu du petit bac</h2>
     </div>
-    <div class="home-page__form">
-      <input type="text" name="" id="" placeholder="Entrez votre pseudo" />
-      <button>Jouer</button>
-    </div>
+    <UserGameCreation />
   </div>
 </template>
 
 <script setup lang="ts">
 import Icon from "../Icon.vue";
+import UserGameCreation from "../Home/UserGameCreation.vue";
 </script>
 
 <style scoped>
@@ -40,11 +38,6 @@ import Icon from "../Icon.vue";
 .title__book {
   height: 100px;
   width: 100px;
-}
-
-.home-page__form {
-  display: flex;
-  gap: 16px;
 }
 
 @media screen and (max-width: 600px) {
