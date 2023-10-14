@@ -39,6 +39,7 @@ if (res.ok) {
 
   h1 {
     display: flex;
+    font-size: 5.5rem;
     gap: 2rem;
   }
 }
@@ -57,6 +58,7 @@ if (res.ok) {
   .home-page__title {
     h1 {
       gap: 1rem;
+      font-size: 4rem;
     }
   }
 }

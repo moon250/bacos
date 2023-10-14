@@ -1,6 +1,6 @@
 <template>
   <Suspense>
-    <HomePage />
+    <router-view />
   </Suspense>
   <Footer />
 </template>
