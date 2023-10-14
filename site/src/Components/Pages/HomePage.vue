@@ -13,7 +13,7 @@
 <script setup lang="ts">
 import Icon from "../Icon.vue";
 import UserGameCreation from "../Home/UserGameCreation.vue";
-import { JSONFetch } from "../../json-fetch.ts";
+import { JSONFetch } from "../../Helpers/json-fetch.ts";
 import { useUserStore } from "../../stores/user.js";
 
 const res = await JSONFetch<{ username: string }>("/user");

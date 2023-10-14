@@ -19,6 +19,7 @@
   "devDependencies": {
     "@types/node": "^20.8.2",
     "@vitejs/plugin-vue": "^4.4.0",
+    "autoprefixer": "^10.4.16",
     "prettier": "^3.0.3",
     "tsc-watch": "^6.0.4",
     "typescript": "^5.2.2",

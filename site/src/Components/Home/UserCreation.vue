@@ -17,7 +17,7 @@
 <script setup lang="ts">
 import Loader from "../Loader.vue";
 import { ref } from "vue";
-import { HttpMethod, JSONFetch } from "../../json-fetch.ts";
+import { HttpMethod, JSONFetch } from "../../Helpers/json-fetch.ts";
 import { useUserStore } from "../../stores/user.js";
 
 const isLoading = ref(false);
