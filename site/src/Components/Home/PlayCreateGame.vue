@@ -23,6 +23,9 @@ import { ref } from "vue";
 import { isLetter, isNumber, isUtilKey } from "../../Helpers/Keyboard.ts";
 
 const code = ref("");
+
+const submit = () => console.log(code);
+
 const typing = (e: KeyboardEvent) => {
   if (code.value.length >= 6 && !isUtilKey(e.key)) {
     e.preventDefault();

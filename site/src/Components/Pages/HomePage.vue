@@ -14,7 +14,7 @@
 import Icon from "../Icon.vue";
 import UserGameCreation from "../Home/UserGameCreation.vue";
 import { JSONFetch } from "../../Helpers/json-fetch.ts";
-import { useUserStore } from "../../stores/user.js";
+import { useUserStore } from "../../stores/user.ts";
 
 const res = await JSONFetch<{ username: string }>("/user");
 

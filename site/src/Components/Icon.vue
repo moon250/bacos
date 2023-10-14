@@ -1,5 +1,5 @@
 <template>
-  <svg :class="props.iconClass ? 'icon' : ''">
+  <svg :class="props['icon-class'] ? 'icon' : ''">
     <use :href="`/sprite.svg#${props.name}`" />
   </svg>
 </template>
