@@ -106,9 +106,16 @@ export class Game {
     await client.hDel(`game:users`, user);
 
     if ((await client.sCard(`game:${id}:members`)) === 0) {
-      this.delete(id);
+      await this.delete(id);
     }
 
     return true;
+  }
+
+  static async isInGame(user: Ip, id: GameId | null = null) {
+    if (id) {
+      return await client.sIsMember(`game:${id}:members`, user);
+    }
+    return await client.hExists("game:users", user);
   }
 }

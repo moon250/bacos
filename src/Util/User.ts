@@ -1,4 +1,5 @@
 import { client } from "../Redis/Client.js";
+import { Ip } from "../types.js";
 
 export type UserObject = {
   username: string;
@@ -6,7 +7,7 @@ export type UserObject = {
 };
 
 export class User {
-  static async create(username: string, ip: string): Promise<UserObject> {
+  static async create(username: string, ip: Ip): Promise<UserObject> {
     const user = {
       username,
       ip,
@@ -21,11 +22,23 @@ export class User {
     return user;
   }
 
-  static async get(ip: string): Promise<UserObject> {
+  static async get(ip: Ip): Promise<UserObject> {
     return await client.get(`users:${ip}`);
   }
 
-  static async exists(ip: string): Promise<boolean> {
+  static async exists(ip: Ip): Promise<boolean> {
     return await client.exists(`users:${ip}`);
+  }
+
+  static async delete(ip: Ip) {
+    await client.del(`users:${ip}`);
+  }
+
+  static async update(ip: Ip, username: string) {
+    const user = await client.get<UserObject>(`users:${ip}`);
+
+    user.username = username;
+
+    await client.set(`users:${ip}`, user);
   }
 }

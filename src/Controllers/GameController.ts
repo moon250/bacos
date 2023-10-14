@@ -11,13 +11,12 @@ export const GameController = {
   async create(request: FastifyRequest, reply: FastifyReply) {
     const body = request.body as { [key: string]: any };
 
-    if (await client.hExists(`game:users`, request.ip)) {
-      const game = await client.hGet(`game:users`, request.ip);
+    if (await Game.isInGame(request.ip)) {
       return reply
         .status(403)
         .send(
           new JsonResponse(
-            `You are already in a game (${game}), leave it first.`,
+            `You are already in a game, leave it first.`,
           ).toResponse(),
         );
     }
@@ -93,7 +92,7 @@ export const GameController = {
             `Game with code ${code} was not found. Does it exist ?`,
           ).toResponse(),
         );
-    } else if (await client.hExists("game:users", request.ip)) {
+    } else if (await Game.isInGame(request.ip)) {
       return reply
         .code(403)
         .send(
@@ -127,13 +126,13 @@ export const GameController = {
             `Game with code ${code} was not found. Does it exist ?`,
           ).toResponse(),
         );
-    } else if (!(await client.sIsMember(`game:${code}:members`, request.ip))) {
+    } else if (!(await Game.isInGame(request.ip, code))) {
       return reply
         .code(403)
         .send(new JsonResponse(`You are not in game ${code}.`).toResponse());
     }
 
-    const game = await Game.leave(code, request.ip);
+    await Game.leave(code, request.ip);
 
     return new JsonResponse(`Successfully leaved game ${code}`).toResponse();
   },

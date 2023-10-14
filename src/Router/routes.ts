@@ -17,6 +17,9 @@ router
 router.middleware(Authenticated, (instance) => {
   return instance
     .get("/user", controller(UserController, "find"))
+    .delete("/user", controller(UserController, "delete"))
+    .patch("/user", controller(UserController, "update"))
+
     .post("/game", controller(GameController, "create"))
     .post("/game/join", controller(GameController, "join"))
     .post("/game/leave", controller(GameController, "leave"));
