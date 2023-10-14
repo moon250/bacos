@@ -1,6 +1,11 @@
 <template>
   <div class="user-creation__form">
-    <input type="text" v-model="username" placeholder="Entrez votre pseudo" />
+    <input
+      type="text"
+      v-model="username"
+      placeholder="Entrez votre pseudo"
+      @keydown.enter="submit"
+    />
     <button @click.prevent="submit">Jouer</button>
 
     <div v-if="isLoading" class="user-creation__loading">
@@ -12,19 +17,35 @@
 <script setup lang="ts">
 import Loader from "../Loader.vue";
 import { ref } from "vue";
-import { JSONFetch } from "../../json-fetch.ts";
+import { HttpMethod, JSONFetch } from "../../json-fetch.ts";
+import { useUserStore } from "../../stores/user.js";
 
 const isLoading = ref(false);
+const store = useUserStore();
 const username = ref("");
 
+interface UserCreationResponse {
+  message: string;
+  username: string;
+}
+
+const emit = defineEmits(["next"]);
+
 const submit = async () => {
+  if (username.value === "") return;
+
   isLoading.value = true;
-  const user = await JSONFetch("/user", "POST", {
+
+  const res = await JSONFetch<UserCreationResponse>("/user", HttpMethod.POST, {
     username: username.value,
   });
+
   isLoading.value = false;
 
-  console.log(user);
+  if (res.ok) {
+    store.username = res.data.username;
+    emit("next");
+  }
 };
 </script>
 

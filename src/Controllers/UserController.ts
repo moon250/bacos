@@ -1,6 +1,6 @@
 import { JsonResponse } from "../Router/JsonResponse.js";
 import { User } from "../Util/User.js";
-import { FastifyRequest } from "fastify";
+import { FastifyReply, FastifyRequest } from "fastify";
 
 export const UserController = {
   async create(request: FastifyRequest) {
@@ -29,5 +29,20 @@ export const UserController = {
       username: { type: "string" },
     },
     required: ["username"],
+  },
+
+  async find(request: FastifyRequest, reply: FastifyReply) {
+    if (await User.exists(request.ip)) {
+      const user = await User.get(request.ip);
+      return new JsonResponse({
+        username: user.username,
+      }).toResponse();
+    }
+
+    reply
+      .status(401)
+      .send(
+        new JsonResponse("Unauthenticated. Create an user first").toResponse(),
+      );
   },
 };

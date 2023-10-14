@@ -1,5 +1,7 @@
 <template>
-  <HomePage />
+  <Suspense>
+    <HomePage />
+  </Suspense>
   <Footer />
 </template>
 

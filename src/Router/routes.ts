@@ -15,6 +15,7 @@ export const registerRoutes: FastifyPluginCallback = (fastify, opts, done) => {
   });
 
   fastify.post("/user", controller(UserController, "create"));
+  fastify.get("/user", controller(UserController, "find"));
 
   fastify.route({
     method: "POST",

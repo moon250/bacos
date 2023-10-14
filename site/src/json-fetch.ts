@@ -1,14 +1,20 @@
-interface JsonResponse {
-  ok: boolean;
-  data: object;
-  status: number;
+export enum HttpMethod {
+  GET = "GET",
+  POST = "POST",
+  PUT = "PUT",
+  DELETE = "DELETE",
+  PATCH = "PATCH",
 }
 
-export const JSONFetch = async (
+export const JSONFetch = async <T = {}>(
   url: string,
-  method = "GET",
+  method: HttpMethod = HttpMethod.GET,
   body: object = {},
-): Promise<JsonResponse> => {
+): Promise<{
+  ok: boolean;
+  data: T;
+  status: number;
+}> => {
   const headers = {
     "Content-type": "application/json; charset=UTF-8",
     Accept: "application/json",

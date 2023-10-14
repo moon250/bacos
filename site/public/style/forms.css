@@ -22,6 +22,10 @@ button {
   cursor: pointer;
 }
 
+.button-large {
+  width: 100%;
+}
+
 button:hover {
   transform: translateX(3px) translateY(-3px);
   box-shadow: -3px 3px 0 0 var(--secondary);
