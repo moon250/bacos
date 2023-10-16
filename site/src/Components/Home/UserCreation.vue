@@ -43,7 +43,7 @@ const submit = async () => {
   isLoading.value = false;
 
   if (res.ok) {
-    store.username = res.data.username;
+    store.username = username.value;
     emit("next");
   }
 };

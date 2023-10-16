@@ -14,7 +14,9 @@
       <button @click.prevent="submit">Jouer</button>
     </div>
     <p>Ou</p>
-    <button class="button-large">Créer une partie</button>
+    <button class="button-large" @click="$emit('next')">
+      Créer une partie
+    </button>
   </div>
 </template>
 

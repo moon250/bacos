@@ -28,5 +28,6 @@ const user = useUserStore();
   align-items: center;
   gap: 8px;
   font-size: 0.9rem;
+  font-weight: bold;
 }
 </style>
