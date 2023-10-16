@@ -14,3 +14,9 @@ body {
   padding: 0;
   font-family: Montserrat, sans-serif;
 }
+
+#app {
+  height: 100dvh;
+  display: grid;
+  grid-template-rows: 48px 1fr 32px;
+}

@@ -1,4 +1,5 @@
 <template>
+  <Header />
   <div class="home-page">
     <div class="home-page__title">
       <h1>
@@ -15,6 +16,7 @@ import Icon from "../Icon.vue";
 import UserGameCreation from "../Home/UserGameCreation.vue";
 import { JSONFetch } from "../../Helpers/json-fetch.ts";
 import { useUserStore } from "../../stores/user.ts";
+import Header from "../Header.vue";
 
 const res = await JSONFetch<{ username: string }>("/user");
 
@@ -25,7 +27,6 @@ if (res.ok) {
 
 <style scoped>
 .home-page {
-  height: 100dvh;
   display: flex;
   flex-direction: column;
   justify-content: center;

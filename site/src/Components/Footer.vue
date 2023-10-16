@@ -7,10 +7,8 @@
 <style scoped>
 p {
   font-size: 0.9rem;
-  position: absolute;
   width: max-content;
-  bottom: 8px;
-  left: 50%;
-  transform: translateX(-50%);
+  align-self: center;
+  justify-self: center;
 }
 </style>

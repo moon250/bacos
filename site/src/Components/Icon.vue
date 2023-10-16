@@ -1,5 +1,5 @@
 <template>
-  <svg :class="props['icon-class'] ? 'icon' : ''">
+  <svg :class="props.iconClass === true ? 'icon' : ''">
     <use :href="`/sprite.svg#${props.name}`" />
   </svg>
 </template>
@@ -10,7 +10,7 @@ const props = defineProps({
     type: String,
     required: true,
   },
-  "icon-class": {
+  iconClass: {
     type: Boolean,
     required: false,
     default() {
