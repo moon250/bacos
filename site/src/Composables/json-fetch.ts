@@ -6,7 +6,7 @@ export enum HttpMethod {
   PATCH = "PATCH",
 }
 
-export const JSONFetch = async <T = {}>(
+export const useFetch = async <T = {}>(
   url: string,
   method: HttpMethod = HttpMethod.GET,
   body: object = {},

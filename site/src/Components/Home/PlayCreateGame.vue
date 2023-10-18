@@ -4,12 +4,12 @@
       <input
         type="text"
         v-model="code"
-        @keydown="typing"
+        @keydown="handleKeydown"
         placeholder="Entrez un code de partie"
         title="Un code de partie à 6 caractères"
         @keydown.enter="submit"
         maxlength="6"
-        pattern="[a-zA-Z0-9]{6}"
+        pattern="[A-Z0-9]{6}"
       />
       <button @click.prevent="submit">Jouer</button>
     </div>
@@ -22,21 +22,26 @@
 
 <script setup lang="ts">
 import { ref } from "vue";
-import { isLetter, isNumber, isUtilKey } from "../../Helpers/Keyboard.ts";
+import { useKeyboard } from "../../Composables/keyboard.ts";
 
 const code = ref("");
+const keyboard = useKeyboard();
 
 const submit = () => console.log(code);
 
-const typing = (e: KeyboardEvent) => {
-  if (code.value.length >= 6 && !isUtilKey(e.key)) {
+function handleKeydown(e: KeyboardEvent) {
+  if (code.value.length >= 6 && !keyboard.isUtilKey(e.key)) {
     e.preventDefault();
   }
 
-  if (!isLetter(e.key) && !isNumber(e.key) && !isUtilKey(e.key)) {
+  if (
+    !keyboard.isLetter(e.key) &&
+    !keyboard.isNumber(e.key) &&
+    !keyboard.isUtilKey(e.key)
+  ) {
     e.preventDefault();
   }
-};
+}
 </script>
 
 <style scoped>

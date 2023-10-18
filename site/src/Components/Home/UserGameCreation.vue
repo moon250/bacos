@@ -9,7 +9,7 @@ import { useUserStore } from "../../stores/user.js";
 import UserCreation from "./UserCreation.vue";
 import { ref } from "vue";
 import PlayCreateGame from "./PlayCreateGame.vue";
-import GameCreation from "./GameCreation.vue";
+import GameCreation from "./GameCreation/GameCreation.vue";
 
 const store = useUserStore();
 const currentPage = ref(0);

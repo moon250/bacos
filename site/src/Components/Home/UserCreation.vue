@@ -17,7 +17,7 @@
 <script setup lang="ts">
 import Loader from "../Loader.vue";
 import { ref } from "vue";
-import { HttpMethod, JSONFetch } from "../../Helpers/json-fetch.ts";
+import { HttpMethod, useFetch } from "../../Composables/json-fetch.ts";
 import { useUserStore } from "../../stores/user.js";
 
 const isLoading = ref(false);
@@ -36,7 +36,7 @@ const submit = async () => {
 
   isLoading.value = true;
 
-  const res = await JSONFetch<UserCreationResponse>("/user", HttpMethod.POST, {
+  const res = await useFetch<UserCreationResponse>("/user", HttpMethod.POST, {
     username: username.value,
   });
 
