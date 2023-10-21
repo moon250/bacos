@@ -5,7 +5,7 @@
       <label for="letterCount">Nombre de lettres :</label>
       <LettersRange />
     </div>
-    <div class="game-creation__field">
+    <div class="game-creation__field game-creation__exclusion">
       <label for="letterCount">Lettres à exclure :</label>
       <LettersExclusion />
     </div>
@@ -39,6 +39,10 @@ h2 {
   align-items: center;
   gap: 16px;
   margin-bottom: 16px;
+}
+
+.game-creation__exclusion label {
+  align-self: flex-start;
 }
 
 @media screen and (max-width: 600px) {

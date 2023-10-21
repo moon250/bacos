@@ -1,16 +1,19 @@
 input,
-button {
+button,
+div[contenteditable="true"] {
   transition: all 0.2s;
 }
 
-input[type="text"] {
+input[type="text"],
+div[contenteditable="true"] {
   border: var(--secondary) 3px solid;
   padding: 8px 16px;
   outline: none;
   background: none;
 }
 
-input[type="text"]:focus {
+input[type="text"]:focus,
+div[contenteditable="true"]:focus {
   transform: translateX(3px) translateY(-3px);
   box-shadow: -3px 3px 0 0 var(--secondary);
 }
