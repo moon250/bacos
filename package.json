@@ -18,27 +18,27 @@
   "license": "MIT",
   "private": true,
   "devDependencies": {
-    "@types/node": "^20.8.2",
+    "@types/node": "^20.8.7",
     "@vitejs/plugin-vue": "^4.4.0",
     "autoprefixer": "^10.4.16",
     "prettier": "^3.0.3",
     "tsc-watch": "^6.0.4",
     "typescript": "^5.2.2",
-    "vite": "^4.4.11",
+    "vite": "^4.5.0",
     "vue-tsc": "^1.8.16"
   },
   "dependencies": {
     "dotenv": "^16.3.1",
-    "fastify": "^4.23.2",
+    "fastify": "^4.24.3",
     "pinia": "^2.1.7",
     "redis": "^4.6.10",
     "socket.io": "^4.7.2",
     "socket.io-client": "^4.7.2",
-    "vue": "^3.3.4",
+    "vue": "^3.3.6",
     "vue-router": "^4.2.5"
   },
   "optionalDependencies": {
-    "bufferutil": "^4.0.7",
+    "bufferutil": "^4.0.8",
     "utf-8-validate": "^6.0.3"
   }
 }
