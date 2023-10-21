@@ -19,8 +19,7 @@ const user = useUserStore();
   display: grid;
   justify-items: flex-end;
   align-self: flex-end;
-  height: 32px;
-  margin: 8px 16px;
+  margin: 16px 32px;
 }
 
 .header__wrapper p {

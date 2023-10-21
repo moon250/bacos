@@ -36,4 +36,8 @@ button:hover {
   button {
     font-size: 0.8rem;
   }
+
+  input {
+    font-size: 0.9rem;
+  }
 }

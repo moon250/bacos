@@ -18,5 +18,5 @@ body {
 #app {
   height: 100dvh;
   display: grid;
-  grid-template-rows: 48px 1fr 32px;
+  grid-template-rows: auto 1fr 32px;
 }

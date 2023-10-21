@@ -28,10 +28,10 @@ h2 {
   border: var(--secondary) 3px solid;
   transform: translateX(3px) translateY(-3px);
   box-shadow: -3px 3px 0 0 var(--secondary);
-  position: absolute;
   background: var(--primary);
-  inset: 100px;
-  z-index: 100;
+  flex: 1;
+  height: 100%;
+  max-width: 950px;
 }
 
 .game-creation__field {
@@ -39,5 +39,11 @@ h2 {
   align-items: center;
   gap: 16px;
   margin-bottom: 16px;
+}
+
+@media screen and (max-width: 600px) {
+  .game-creation__field {
+    display: block;
+  }
 }
 </style>

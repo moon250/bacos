@@ -1,22 +1,29 @@
 <template>
   <UserCreation v-if="currentPage === 0" @next="currentPage++" />
   <PlayCreateGame v-if="currentPage === 1" @next="currentPage++" />
-  <GameCreation v-if="currentPage === 2" />
 </template>
 
 <script setup lang="ts">
+import { ref, watch } from "vue";
+import { useRouter } from "vue-router";
 import { useUserStore } from "../../stores/user.js";
 import UserCreation from "./UserCreation.vue";
-import { ref } from "vue";
 import PlayCreateGame from "./PlayCreateGame.vue";
-import GameCreation from "./GameCreation/GameCreation.vue";
 
 const store = useUserStore();
 const currentPage = ref(0);
+const router = useRouter();
 
 if (store.username !== "") {
   currentPage.value = 1;
 }
+
+watch(currentPage, () => {
+  console.log(currentPage);
+  if (currentPage.value === 2) {
+    router.push({ name: "new_game" });
+  }
+});
 </script>
 
 <style scoped></style>
