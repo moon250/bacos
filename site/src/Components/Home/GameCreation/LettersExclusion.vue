@@ -3,30 +3,31 @@
     class="letters-exclusion__wrapper"
     contenteditable="true"
     @keydown="handle"
+    spellcheck="false"
   >
-    <span v-for="letter of letters">{{ letter }}</span>
+    <span v-for="letter of store.excludedLetters">{{ letter }}</span>
   </div>
 </template>
 
 <script setup lang="ts">
 import { useKeyboard } from "../../../Composables/keyboard.ts";
-import { ref } from "vue";
+import { useGameCreationStore } from "../../../stores/game-creation.ts";
 
+const store = useGameCreationStore();
 const keyboard = useKeyboard();
-const letters = ref<string[]>([]);
 
 const handle = (e: KeyboardEvent) => {
   e.preventDefault();
 
   if (
     keyboard.isLetter(e.key) &&
-    !letters.value.includes(e.key.toUpperCase())
+    !store.excludedLetters.includes(e.key.toUpperCase())
   ) {
-    letters.value.push(e.key.toUpperCase());
+    store.excludedLetters.push(e.key.toUpperCase());
   }
 
   if (["Backspace", "Delete"].includes(e.key)) {
-    letters.value.pop();
+    store.excludedLetters.pop();
   }
 };
 </script>

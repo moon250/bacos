@@ -5,6 +5,7 @@
       v-model="username"
       placeholder="Entrez votre pseudo"
       @keydown.enter="submit"
+      spellcheck="false"
     />
     <button @click.prevent="submit">Jouer</button>
 

@@ -5,7 +5,7 @@
     </button>
     <div class="letters-range__range">
       <span class="letters-range__background" />
-      <span class="letters-range__count">{{ letters }}</span>
+      <span class="letters-range__count">{{ store.lettersCount }}</span>
     </div>
     <button @click="advance(1)">
       <Icon name="add" :icon-class="false" />
@@ -14,20 +14,20 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from "vue";
 import Icon from "../../Icon.vue";
+import { useGameCreationStore } from "../../../stores/game-creation.ts";
 
-const letters = ref(13);
+const store = useGameCreationStore();
 
 const advance = (step: number) => {
-  if (letters.value + step > 26 || letters.value + step < 1) {
+  if (store.lettersCount + step > 26 || store.lettersCount + step < 1) {
     return;
   }
 
-  letters.value += step;
+  store.lettersCount += step;
   document.documentElement.style.setProperty(
     "--letters-range-progress",
-    (1 - letters.value / 26) * 100 + "%",
+    Math.floor((1 - store.lettersCount / 26) * 100) + "%",
   );
 };
 </script>
@@ -64,7 +64,7 @@ const advance = (step: number) => {
   position: absolute;
   top: 0;
   left: 0;
-  right: var(--letters-range-progress, 50%);
+  right: var(--letters-range-progress, 80%);
   z-index: -1;
   /* 24px - border width */
   height: 21px;
@@ -80,6 +80,6 @@ const advance = (step: number) => {
   height: 28px;
   background: var(--primary);
   border: var(--secondary) 3px solid;
-  right: calc(var(--letters-range-progress, 50%) - 8px);
+  right: calc(var(--letters-range-progress, 80%) - 8px);
 }
 </style>
