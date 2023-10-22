@@ -75,6 +75,7 @@ const advance = (step: number) => {
   transition: all 0.2s;
   position: absolute;
   text-align: center;
+  font-weight: bold;
   top: -4px;
   width: 28px;
   height: 28px;

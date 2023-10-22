@@ -1,0 +1,46 @@
+<template>
+  <div class="game-speed__wrapper">
+    <p :data-selected="store.speed === 0" @click="store.speed = 0">
+      30s par lettre
+    </p>
+    <p :data-selected="store.speed === 1" @click="store.speed = 1">
+      1min30s par lettre
+    </p>
+    <p :data-selected="store.speed === 2" @click="store.speed = 2">
+      3min par lettre
+    </p>
+  </div>
+</template>
+
+<script setup lang="ts">
+import { useGameCreationStore } from "../../../stores/game-creation.ts";
+
+const store = useGameCreationStore();
+</script>
+
+<style scoped>
+.game-speed__wrapper {
+  flex: 1;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  justify-items: center;
+  gap: 32px;
+  font-size: 0.9rem;
+}
+
+.game-speed__wrapper p {
+  cursor: pointer;
+  border: var(--secondary) 3px solid;
+  padding: 2px 32px;
+  transition: all 0.2s;
+  width: 100%;
+  text-align: center;
+}
+
+.game-speed__wrapper p:hover,
+.game-speed__wrapper p[data-selected="true"] {
+  transform: translateX(3px) translateY(-3px);
+  box-shadow: -3px 3px 0 0 var(--secondary);
+  font-weight: bold;
+}
+</style>

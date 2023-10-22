@@ -9,12 +9,17 @@
       <label for="letterCount">Lettres à exclure :</label>
       <LettersExclusion />
     </div>
+    <div class="game-creation__field">
+      <label for="letterCount">Vitesse de la partie :</label>
+      <GameSpeed />
+    </div>
   </div>
 </template>
 
 <script setup lang="ts">
 import LettersRange from "./LettersRange.vue";
 import LettersExclusion from "./LettersExclusion.vue";
+import GameSpeed from "./GameSpeed.vue";
 </script>
 
 <style scoped>
