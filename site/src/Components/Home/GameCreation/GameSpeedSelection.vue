@@ -1,12 +1,12 @@
 <template>
   <div class="game-speed__wrapper">
-    <p :data-selected="store.speed === 0" @click="store.speed = 0">
+    <p :data-selected="store.speed === short" @click="store.speed = short">
       30s par lettre
     </p>
-    <p :data-selected="store.speed === 1" @click="store.speed = 1">
+    <p :data-selected="store.speed === medium" @click="store.speed = medium">
       1min30s par lettre
     </p>
-    <p :data-selected="store.speed === 2" @click="store.speed = 2">
+    <p :data-selected="store.speed === long" @click="store.speed = long">
       3min par lettre
     </p>
   </div>
@@ -16,6 +16,9 @@
 import { useGameCreationStore } from "../../../stores/game-creation.ts";
 
 const store = useGameCreationStore();
+const short = 1 << 0;
+const medium = 1 << 1;
+const long = 1 << 2;
 </script>
 
 <style scoped>

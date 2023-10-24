@@ -3,11 +3,15 @@
     <h2>Créez votre partie</h2>
     <div class="game-creation__field">
       <label for="letterCount">Nombre de lettres :</label>
-      <LettersRange />
+      <LettersRange id="letterCount" />
     </div>
     <div class="game-creation__field game-creation__exclusion">
-      <label for="letterCount">Lettres à exclure :</label>
-      <LettersExclusion />
+      <label for="letterExclusion">Lettres à exclure :</label>
+      <LettersExclusion id="letterExclusion" />
+    </div>
+    <div class="game-creation__field">
+      <label for="gameSpeed">Vitesse de la partie :</label>
+      <GameSpeedSelection id="gameSpeed" />
     </div>
     <div class="game-creation__field">
       <label for="letterCount">Vitesse de la partie :</label>
