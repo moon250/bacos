@@ -1,13 +1,11 @@
 {
   "compileOnSave": true,
   "compilerOptions": {
-    "rootDir": "src",
     "outDir": "dist",
     "moduleResolution": "Node16",
     "lib": ["ES2022"],
     "module": "Node16",
     "target": "ES2022",
-
 
     "strict": true,
     "useUnknownInCatchVariables": false,
@@ -19,5 +17,6 @@
   ],
   "include": [
     "src/**/*",
+    "common/**/*"
   ],
 }

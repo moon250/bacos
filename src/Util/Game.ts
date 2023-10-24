@@ -1,8 +1,8 @@
 import { client } from "../Redis/Client.js";
-import { Bitfield } from "./Bitfield.js";
+import { Bitfield } from "../../common/Util/Bitfield.js";
 import { GameId, Ip } from "../types.js";
-import { GameAnswers as GameAnswersEnum } from "../Enums/GameAnswers.js";
-import { GameParameters as GameParametersEnum } from "../Enums/GameParameters.js";
+import { GameAnswers as GameAnswersEnum } from "../../common/Enums/GameAnswers.js";
+import { GameParameters as GameParametersEnum } from "../../common/Enums/GameParameters.js";
 
 type GameParameters = Bitfield<GameParametersEnum>;
 type GameAnswers = Bitfield<GameAnswersEnum>;
