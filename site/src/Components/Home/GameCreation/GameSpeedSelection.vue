@@ -26,7 +26,6 @@ const long = 1 << 2;
   flex: 1;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  justify-items: center;
   gap: 32px;
   font-size: 0.9rem;
 }
@@ -36,7 +35,6 @@ const long = 1 << 2;
   border: var(--secondary) 3px solid;
   padding: 2px 32px;
   transition: all 0.2s;
-  width: 100%;
   text-align: center;
 }
 
