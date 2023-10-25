@@ -13,8 +13,8 @@
       <label for="gameSpeed">Vitesse de la partie :</label>
       <GameSpeedSelection id="gameSpeed" />
     </div>
-    <div class="game-creation__field">
-      <label for="gameAnswers">Réponses</label>
+    <div class="game-creation__field game-creation__answers">
+      <label for="gameAnswers">Réponses :</label>
       <GameAnswersSelection id="gameAnswers" />
     </div>
   </div>
@@ -51,7 +51,9 @@ h2 {
   margin-bottom: 16px;
 }
 
-.game-creation__exclusion label {
+.game-creation__field label,
+.game-creation__answers label {
+  margin-top: 4px;
   align-self: flex-start;
 }
 

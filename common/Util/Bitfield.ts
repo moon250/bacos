@@ -37,4 +37,12 @@ export class Bitfield<BitFlagType extends BitfieldFlag> {
 
     return this;
   }
+
+  public toggle(flag: BitFlagType): Bitfield<BitFlagType> {
+    if (this.has(flag)) {
+      return this.remove(flag)
+    }
+
+    return this.add(flag)
+  }
 }

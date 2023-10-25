@@ -1,12 +1,21 @@
 <template>
   <div class="game-speed__wrapper">
-    <p :data-selected="store.speed === short" @click="store.speed = short">
+    <p
+      :data-selected="store.speed === GameParameters.Short"
+      @click="store.speed = GameParameters.Short"
+    >
       30s par lettre
     </p>
-    <p :data-selected="store.speed === medium" @click="store.speed = medium">
+    <p
+      :data-selected="store.speed === GameParameters.Medium"
+      @click="store.speed = GameParameters.Medium"
+    >
       1min30s par lettre
     </p>
-    <p :data-selected="store.speed === long" @click="store.speed = long">
+    <p
+      :data-selected="store.speed === GameParameters.Long"
+      @click="store.speed = GameParameters.Long"
+    >
       3min par lettre
     </p>
   </div>
@@ -14,11 +23,9 @@
 
 <script setup lang="ts">
 import { useGameCreationStore } from "../../../stores/game-creation.ts";
+import { GameParameters } from "../../../../../common/Enums/GameParameters.ts";
 
 const store = useGameCreationStore();
-const short = 1 << 0;
-const medium = 1 << 1;
-const long = 1 << 2;
 </script>
 
 <style scoped>
@@ -26,7 +33,6 @@ const long = 1 << 2;
   flex: 1;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  justify-items: center;
   gap: 32px;
   font-size: 0.9rem;
 }
@@ -36,7 +42,6 @@ const long = 1 << 2;
   border: var(--secondary) 3px solid;
   padding: 2px 32px;
   transition: all 0.2s;
-  width: 100%;
   text-align: center;
 }
 
