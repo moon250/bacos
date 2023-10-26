@@ -4,7 +4,6 @@ import Fastify, {
   RouteShorthandOptionsWithHandler,
 } from "fastify";
 import { Middleware, Route } from "./router.js";
-import { controller } from "../Controllers/Controller.js";
 
 const fastify = Fastify({
   logger: true,
@@ -107,6 +106,8 @@ export class Router {
     };
 
     this.routes.push(route);
+
+    console.info(`Registered route ${url}`);
 
     return this;
   }
